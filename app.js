@@ -5,17 +5,25 @@ async function fetchData(){
     try {
         let response = await fetch(url);
         let data = await response.json();
-        return data.articles;
+        
+        let infos = data.articles.map(article => {
+            return {
+                author: article.author,
+                title: article.title,
+                description: article.description
+            };
+        });
+
+        return {
+            articles: infos};
     }
     catch (error){
         console.log('Error', error);
     }
 }
-fetchData().then(articles => {
-    articles.forEach(article => {
-        console.log("Title: ", article.title);
-        console.log("Author: ", article.author);
-        console.log("Description: ", article.description);
-        console.log("-------------------------------------");
-    });
+
+
+
+fetchData().then(articlesObject => {
+    console.log(articlesObject);
 });
