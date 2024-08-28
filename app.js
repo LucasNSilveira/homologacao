@@ -13,9 +13,9 @@ async function fetchData(){
 }
 fetchData().then(articles => {
     articles.forEach(article => {
-        console.log("Titl: ", article.title);
+        console.log("Title: ", article.title);
         console.log("Author: ", article.author);
         console.log("Description: ", article.description);
-        console.log("--------------------------------");
+        console.log("-------------------------------------");
     });
 });
